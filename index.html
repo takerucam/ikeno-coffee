@@ -2,9 +2,9 @@
 <html lang="ja">
   <head>
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/wmurphyrd/aframe-super-hands-component@v3.0.3/dist/super-hands.min.js"></script>
     <script type="module" src="index.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="https://unpkg.com/super-hands@^3.0.5/dist/super-hands.min.js"></script>
   </head>
   <body>
     <a-scene
@@ -14,7 +14,7 @@
       sessionType="immersive-ar"
       physics="driver: ammo; debug: true;"
       background="transparent: true"
-
+     
     >
       <!-- Quest 3 の外部カメラ映像が背景になる -->
       <!-- <a-light type="ambient" intensity="0.5"></a-light> -->
@@ -24,13 +24,15 @@
         id="leftHand"
         hand-tracking-grab-controls="hand: left;"
         ammo-body="type: kinematic"
-        ammo-shape="type: sphere; fit: manual; sphereRadius: 0.5; collisionFilterGroup: 1; collisionFilterMask: 1;"
+        ammo-shape="type: sphere; fit: manual; sphereRadius: 0.5;"
+        super-hands
       ></a-entity>
       <a-entity
         id="rightHand"
         hand-tracking-grab-controls="hand: right;"
         ammo-body="type: kinematic"
-        ammo-shape="type: sphere; fit: manual; sphereRadius: 0.5; collisionFilterGroup: 1; collisionFilterMask: 1;"
+        ammo-shape="type: sphere; fit: manual; sphereRadius: 0.5;"
+        super-hands
       ></a-entity>
 
 
@@ -43,7 +45,8 @@
         position="1 0 -1"
         scale="3 3 3"
         ammo-body="type: kinematic"
-        ammo-shape="type: box; fit: manual; halfExtents: 0.5 0.5 0.5; collisionFilterGroup: 1; collisionFilterMask: 1;"
+        ammo-shape="type: box; fit: manual; halfExtents: 0.5 0.5 0.5;"
+        event-set__grab-start=success.sound()
       ></a-gltf-model>
 
       <!-- dogg 2 -->
@@ -55,7 +58,8 @@
         position="-1 0 -1"
         scale="3 3 3"
         ammo-body="type: kinematic"
-        ammo-shape="type: box; fit: manual; halfExtents: 0.5 0.5 0.5; collisionFilterGroup: 1; collisionFilterMask: 1;"
+        ammo-shape="type: box; fit: manual; halfExtents: 0.5 0.5 0.5;"
+        event-set__grab-start=success.sound()
       ></a-gltf-model>
 
       <!-- dogg 3 -->
@@ -67,7 +71,8 @@
         position="0 0 -2"
         scale="3 3 3"
         ammo-body="type: kinematic"
-        ammo-shape="type: box; fit: manual; halfExtents: 0.5 0.5 0.5; collisionFilterGroup: 1; collisionFilterMask: 1;"
+        ammo-shape="type: box; fit: manual; halfExtents: 0.5 0.5 0.5;"
+        event-set__grab-start=success.sound()
       ></a-gltf-model>
 
       <a-entity
