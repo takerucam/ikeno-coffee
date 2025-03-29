@@ -6,11 +6,14 @@
   </head>
   <body>
     <a-scene
-    webxr="optionalFeatures: hit-test, dom-overlay;"
-    xr-mode-ui="enabled: true"
-    renderer="colorManagement: true; physicallyCorrectLights: true;"
-    sessionType="immersive-ar"
+      webxr="optionalFeatures: hit-test, dom-overlay;"
+      xr-mode-ui="enabled: true"
+      renderer="colorManagement: true; physicallyCorrectLights: true;"
+      sessionType="immersive-ar"
     >
+      <!-- Quest 3 の外部カメラ映像が背景になる -->
+      <!-- <a-light type="ambient" intensity="0.5"></a-light> -->
+      <a-camera position="0 1.6 0"></a-camera>
 
       <a-entity id="leftHand" hand-tracking-grab-controls="hand: left;"></a-entity>
       <a-entity id="rightHand" hand-tracking-grab-controls="hand: right;"></a-entity>
