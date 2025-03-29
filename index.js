@@ -145,6 +145,7 @@ if (typeof AFRAME !== 'undefined') {
       // });
 
       dogg.addEventListener('collide', (event) => {
+        successSound.components.sound.playSound();
         if (isVisible && !isGrabbed) {
           isGrabbed = true;
           hideDogg();
