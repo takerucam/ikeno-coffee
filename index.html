@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
   <head>
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
@@ -15,20 +15,136 @@
       <!-- <a-light type="ambient" intensity="0.5"></a-light> -->
       <a-camera position="0 1.6 0"></a-camera>
 
-      <a-entity id="leftHand" hand-tracking-grab-controls="hand: left;"></a-entity>
-      <a-entity id="rightHand" hand-tracking-grab-controls="hand: right;"></a-entity>
-      <a-entity class="clickable">
-        <a-gltf-model id="pot" grabbable class="collidable" src="assets/cup-sabae-dogg.glb" position="0.5 1 -1" scale="3 3 3" hand-aware-sound="leftHandSound: /assets/bgm/um.m4a; rightHandSound: /assets/bgm/handan.m4a" ></a-gltf-model>
-      </a-entity>
-      <a-entity>
-        <a-gltf-model id="pot" grabbable class="collidable" src="assets/sabae-dogg.glb" position="-0.5 1 -1" scale="3 3 3"></a-gltf-model>
-      </a-entity>
+      <a-entity
+        id="leftHand"
+        hand-tracking-grab-controls="hand: left;"
+      ></a-entity>
+      <a-entity
+        id="rightHand"
+        hand-tracking-grab-controls="hand: right;"
+      ></a-entity>
+      <!-- <a-entity class="clickable"> -->
+      <!--   <a-gltf-model -->
+      <!--     id="pot" -->
+      <!--     grabbable -->
+      <!--     class="collidable" -->
+      <!--     src="assets/cup-sabae-dogg.glb" -->
+      <!--     position="0.5 1 -1" -->
+      <!--     scale="3 3 3" -->
+      <!--     hand-aware-sound="leftHandSound: /assets/bgm/um.m4a; rightHandSound: /assets/bgm/handan.m4a" -->
+      <!--   ></a-gltf-model> -->
+      <!-- </a-entity> -->
+      <!-- <a-entity> -->
+      <!--   <a-gltf-model -->
+      <!--     id="pot" -->
+      <!--     grabbable -->
+      <!--     class="collidable" -->
+      <!--     src="assets/sabae-dogg.glb" -->
+      <!--     position="-0.5 1 -1" -->
+      <!--     scale="3 3 3" -->
+      <!--   ></a-gltf-model> -->
+      <!-- </a-entity> -->
+
+      <a-entity
+        id="leftHand"
+        hand-tracking-grab-controls="hand: left;"
+        super-hands
+      ></a-entity>
+      <a-entity
+        id="rightHand"
+        hand-tracking-grab-controls="hand: right;"
+        super-hands
+      ></a-entity>
+
+      <!-- dogg 1 -->
+      <a-gltf-model
+        class="dogg-hole"
+        sabae-game="holeIndex: 0"
+        grabbable
+        src="assets/sabae-dogg.glb"
+        position="1 0 -1"
+        scale="3 3 3"
+      ></a-gltf-model>
+
+      <!-- dogg 2 -->
+      <a-gltf-model
+        class="dogg-hole"
+        sabae-game="holeIndex: 1"
+        grabbable
+        src="assets/sabae-dogg.glb"
+        position="-1 0 -1"
+        scale="3 3 3"
+      ></a-gltf-model>
+
+      <!-- dogg 3 -->
+      <a-gltf-model
+        class="dogg-hole"
+        sabae-game="holeIndex: 2"
+        grabbable
+        src="assets/sabae-dogg.glb"
+        position="0 0 -2"
+        scale="3 3 3"
+      ></a-gltf-model>
+
+      <a-entity
+        id="success-sound"
+        sound="src: url(assets/success.mp3); on: success"
+      ></a-entity>
+      <a-entity
+        id="fail-sound"
+        sound="src: url(assets/fail.mp3); on: fail"
+      ></a-entity>
+      <a-entity
+        id="fry-sound"
+        sound="src: url(assets/fry.mp3); on: fry"
+      ></a-entity>
 
       <!-- サウンドエンティティ -->
-      <a-entity id="left-hand-sound" sound="src: url(/assets/bgm/um.m4a); autoplay: false; loop: false; volume: 1"></a-entity>
-      <a-entity id="right-hand-sound" sound="src: url(/assets/bgm/handan.m4a); autoplay: false; loop: false; volume: 1"></a-entity>
-      <a-entity id="touch-sound" sound="src: url(/assets/bgm/handan.m4a); autoplay: false; loop: false; volume: 1"></a-entity>
-    </a-scene>
+      <a-entity
+        id="left-hand-sound"
+        sound="src: url(/assets/bgm/um.m4a); autoplay: false; loop: false; volume: 1"
+      ></a-entity>
+      <a-entity
+        id="right-hand-sound"
+        sound="src: url(/assets/bgm/handan.m4a); autoplay: false; loop: false; volume: 1"
+      ></a-entity>
+      <a-entity
+        id="touch-sound"
+        sound="src: url(/assets/bgm/handan.m4a); autoplay: false; loop: false; volume: 1"
+      ></a-entity>
 
+      <a-sky color="#ECECEC"></a-sky>
+
+      <!-- abura -->
+      <a-plane
+        position="0 0.3 -1.5"
+        rotation="-90 0 0"
+        width="5"
+        height="5"
+        color="#aa5500"
+        material="opacity: 0.6; transparent: true; side: double;"
+      >
+      </a-plane>
+
+      <!-- ui -->
+      <a-entity id="game-ui" position="0 2 -2">
+        <a-text
+          id="score-text"
+          value="Score: 0"
+          align="center"
+          color="black"
+          position="0 0.3 0"
+          width="4"
+        ></a-text>
+        <a-text
+          id="timer-text"
+          value="Time: 30"
+          align="center"
+          color="black"
+          position="0 0 0"
+          width="4"
+        ></a-text>
+      </a-entity>
+    </a-scene>
   </body>
 </html>
