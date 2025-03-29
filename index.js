@@ -138,6 +138,7 @@ if (typeof AFRAME !== 'undefined') {
 
        // 衝突イベントのリスナーを追加
       dogg.addEventListener('collidestart', (event) => {
+        successSound.components.sound.playSound();
         // 衝突した相手が手かどうかを確認
         const collidingEntity = event.detail.targetEl;
 
