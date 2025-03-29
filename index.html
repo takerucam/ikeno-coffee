@@ -2,6 +2,7 @@
 <html lang="ja">
   <head>
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
     <script type="module" src="index.js"></script>
   </head>
   <body>
@@ -11,22 +12,21 @@
     renderer="colorManagement: true; physicallyCorrectLights: true;"
     sessionType="immersive-ar"
     >
-      <!-- <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane> -->
-      
+
       <a-entity id="leftHand" hand-tracking-grab-controls="hand: left;"></a-entity>
       <a-entity id="rightHand" hand-tracking-grab-controls="hand: right;"></a-entity>
-      <a-entity>
-        <a-gltf-model id="pot"grabbable class="collidable" src="assets/cup-sabae-dogg.glb" position="0 1 -1" scale="3 3 3" "></a-gltf-model>
+      <a-entity class="clickable">
+        <a-gltf-model id="pot" grabbable class="collidable" src="assets/cup-sabae-dogg.glb" position="0 1 -1" scale="3 3 3" hand-aware-sound="leftHandSound: /assets/bgm/um.m4a; rightHandSound: /assets/bgm/handan.m4a" ></a-gltf-model>
       </a-entity>
       <a-entity>
-        <a-gltf-model id="pot"grabbable class="collidable" src="assets/sabae-dogg.glb" position="1 1 -1" scale="3 3 3" "></a-gltf-model>
+        <a-gltf-model id="pot" grabbable class="collidable" src="assets/sabae-dogg.glb" position="1 1 -1" scale="3 3 3"></a-gltf-model>
       </a-entity>
 
       <a-sky color="#ECECEC"></a-sky>
-
+      <!-- カーソルをつけてオブジェクトをクリックできるようにする -->
+      <a-camera>
+        <a-cursor raycaster="objects: .clickable"></a-cursor>
+      </a-camera>
     </a-scene>
 
   </body>
