@@ -137,28 +137,51 @@ if (typeof AFRAME !== 'undefined') {
       }
 
        // 衝突イベントのリスナーを追加
-       dogg.addEventListener('collide', (event) => {
-        console.log('衝突が検出されました:', event);
+      //  dogg.addEventListener('collide', (event) => {
+      //   console.log('衝突が検出されました:', event);
+      //   successSound.components.sound.playSound();
+
+      //   // 衝突した相手のエンティティを正しく取得
+      //   const collidingEntity = event.detail.body.el;
+
+      //   console.log('衝突した相手:', collidingEntity ? collidingEntity.id : 'unknown');
+
+      //   if (collidingEntity &&
+      //       (collidingEntity.id === 'leftHand' || collidingEntity.id === 'rightHand') &&
+      //       isVisible && !isGrabbed) {
+      //     console.log(`Dogg hit by ${collidingEntity.id}`);
+      //     isGrabbed = true;
+      //     hideDogg();
+      //     successSound.components.sound.playSound();
+
+      //     // スコアを増加
+      //     score += 1;
+      //     updateScore();
+      //   }
+      // });
+
+      // grabbable イベントのリスニング
+    dogg.addEventListener('grabstart', (event) => {
+      successSound.components.sound.playSound();
+      console.log('dogg-hole が掴まれました:', event);
+
+      // 掴んだ手のエンティティを取得
+      const handEntity = event.detail.hand || event.detail.grabber;
+      console.log('掴んだ手:', handEntity ? handEntity.id : 'unknown');
+
+      if (handEntity &&
+          (handEntity.id === 'leftHand' || handEntity.id === 'rightHand') &&
+          isVisible && !isGrabbed) {
+        console.log(`Dogg grabbed by ${handEntity.id}`);
+        isGrabbed = true;
+        hideDogg();
         successSound.components.sound.playSound();
 
-        // 衝突した相手のエンティティを正しく取得
-        const collidingEntity = event.detail.body.el;
-
-        console.log('衝突した相手:', collidingEntity ? collidingEntity.id : 'unknown');
-
-        if (collidingEntity &&
-            (collidingEntity.id === 'leftHand' || collidingEntity.id === 'rightHand') &&
-            isVisible && !isGrabbed) {
-          console.log(`Dogg hit by ${collidingEntity.id}`);
-          isGrabbed = true;
-          hideDogg();
-          successSound.components.sound.playSound();
-
-          // スコアを増加
-          score += 1;
-          updateScore();
-        }
-      });
+        // スコアを増加
+        score += 1;
+        updateScore();
+      }
+    });
 
       setTimeout(() => {
         setInterval(
