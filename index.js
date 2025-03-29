@@ -137,12 +137,17 @@ if (typeof AFRAME !== 'undefined') {
       }
 
        // 衝突イベントのリスナーを追加
-      dogg.addEventListener('collidestart', (event) => {
+       dogg.addEventListener('collidestart', (event) => {
+        console.log('衝突が検出されました:', event);
         successSound.components.sound.playSound();
-        // 衝突した相手が手かどうかを確認
-        const collidingEntity = event.detail.targetEl;
 
-        if ((collidingEntity.id === 'leftHand' || collidingEntity.id === 'rightHand') &&
+        // 衝突した相手のエンティティを正しく取得
+        const collidingEntity = event.detail.body.el;
+
+        console.log('衝突した相手:', collidingEntity ? collidingEntity.id : 'unknown');
+
+        if (collidingEntity &&
+            (collidingEntity.id === 'leftHand' || collidingEntity.id === 'rightHand') &&
             isVisible && !isGrabbed) {
           console.log(`Dogg hit by ${collidingEntity.id}`);
           isGrabbed = true;
