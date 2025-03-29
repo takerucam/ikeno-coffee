@@ -1,5 +1,7 @@
 'use strict';
 
+let a = 2;
+
 let score = 0;
 let timeLeft = 30;
 let timerInterval = null;
