@@ -2,7 +2,6 @@
 <html lang="ja">
   <head>
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
     <script type="module" src="index.js"></script>
   </head>
   <body>
@@ -22,7 +21,10 @@
         <a-gltf-model id="pot" grabbable class="collidable" src="assets/sabae-dogg.glb" position="-0.5 1 -1" scale="3 3 3"></a-gltf-model>
       </a-entity>
 
-      
+      <!-- サウンドエンティティ -->
+      <a-entity id="left-hand-sound" sound="src: url(/assets/bgm/um.m4a); autoplay: false; loop: false; volume: 1"></a-entity>
+      <a-entity id="right-hand-sound" sound="src: url(/assets/bgm/handan.m4a); autoplay: false; loop: false; volume: 1"></a-entity>
+      <a-entity id="touch-sound" sound="src: url(/assets/bgm/handan.m4a); autoplay: false; loop: false; volume: 1"></a-entity>
     </a-scene>
 
   </body>
