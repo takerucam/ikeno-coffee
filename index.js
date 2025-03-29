@@ -1,21 +1,17 @@
 console.log("hello vr");
-
-AFRAME.registerComponent('foo', {
+ // WebXRのセッション開始時にPassthroughを有効化
+ AFRAME.registerComponent('passthrough-start', {
   init: function () {
-    // Set up throttling.
-    this.throttledFunction = AFRAME.utils.throttle(this.everySecond, 1000, this);
-    AFRAME.utils.device.checkHeadsetConnected ()
-    
-  },
-
-  everySecond: function () {
-    // Called every second.
-    console.log("A second passed.");
-  },
-
-  tick: function (t, dt) {
-    this.throttledFunction();  // Called once a second.
-    console.log("A frame passed.");  // Called every frame.
-   },
-
+    this.el.sceneEl.addEventListener('enter-vr', () => {
+      if (navigator.xr) {
+        navigator.xr.requestSession('immersive-ar', { requiredFeatures: ['passthrough'] })
+          .then(session => {
+            console.log('Passthrough enabled');
+          })
+          .catch(err => console.error('Passthrough failed', err));
+      }
+    });
+  }
 });
+
+document.querySelector('a-scene').setAttribute('passthrough-start', '');
