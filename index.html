@@ -3,7 +3,8 @@
   <head>
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
     <script type="module" src="index.js"></script>
-    
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
   </head>
   <body>
     <a-scene
@@ -11,6 +12,7 @@
       xr-mode-ui="XRMode: xr"
       renderer="colorManagement: true; physicallyCorrectLights: true;"
       sessionType="immersive-ar"
+      physics="driver: ammo; debug: false;"
     >
       <!-- Quest 3 の外部カメラ映像が背景になる -->
       <!-- <a-light type="ambient" intensity="0.5"></a-light> -->
@@ -19,10 +21,14 @@
       <a-entity
         id="leftHand"
         hand-tracking-grab-controls="hand: left;"
+        ammo-body="type: kinematic"
+        ammo-shape="type: sphere; fit: manual; sphereRadius: 0.1;"
       ></a-entity>
       <a-entity
         id="rightHand"
         hand-tracking-grab-controls="hand: right;"
+        ammo-body="type: kinematic"
+        ammo-shape="type: sphere; fit: manual; sphereRadius: 0.1;"
       ></a-entity>
 
 
@@ -34,6 +40,8 @@
         src="assets/sabae-dogg.glb"
         position="1 0 -1"
         scale="3 3 3"
+        ammo-body="type: kinematic"
+        ammo-shape="type: box; fit: manual; halfExtents: 0.3 0.3 0.3;"
       ></a-gltf-model>
 
       <!-- dogg 2 -->
@@ -44,6 +52,8 @@
         src="assets/sabae-dogg.glb"
         position="-1 0 -1"
         scale="3 3 3"
+        ammo-body="type: kinematic"
+        ammo-shape="type: box; fit: manual; halfExtents: 0.3 0.3 0.3;"
       ></a-gltf-model>
 
       <!-- dogg 3 -->
@@ -54,6 +64,8 @@
         src="assets/sabae-dogg.glb"
         position="0 0 -2"
         scale="3 3 3"
+        ammo-body="type: kinematic"
+        ammo-shape="type: box; fit: manual; halfExtents: 0.3 0.3 0.3;"
       ></a-gltf-model>
 
       <a-entity
@@ -69,6 +81,7 @@
         sound="src: url(assets/fry.mp3); on: fry"
       ></a-entity>
 
+      <a-sky color="#ECECEC"></a-sky>
       <!-- <a-sky color="#ECECEC"></a-sky>  -->
 
       <!-- abura -->

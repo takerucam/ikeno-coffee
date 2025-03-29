@@ -136,6 +136,24 @@ if (typeof AFRAME !== 'undefined') {
         });
       }
 
+       // 衝突イベントのリスナーを追加
+      dogg.addEventListener('collidestart', (event) => {
+        // 衝突した相手が手かどうかを確認
+        const collidingEntity = event.detail.targetEl;
+
+        if ((collidingEntity.id === 'leftHand' || collidingEntity.id === 'rightHand') &&
+            isVisible && !isGrabbed) {
+          console.log(`Dogg hit by ${collidingEntity.id}`);
+          isGrabbed = true;
+          hideDogg();
+          successSound.components.sound.playSound();
+
+          // スコアを増加
+          score += 1;
+          updateScore();
+        }
+      });
+
       // dogg.addEventListener("grab-start", () => {
       //   if (isVisible && !isGrabbed) {
       //     isGrabbed = true;
