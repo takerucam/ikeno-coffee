@@ -10,9 +10,11 @@
     <a-scene
       webxr="optionalFeatures: hit-test; requiredFeatures: local-floor;"
       xr-mode-ui="XRMode: xr"
-      renderer="colorManagement: true; physicallyCorrectLights: true;"
+      renderer="colorManagement: true; physicallyCorrectLights: true; alpha: true;"
       sessionType="immersive-ar"
       physics="driver: ammo; debug: true;"
+      background="transparent: true"
+      embedded
     >
       <!-- Quest 3 の外部カメラ映像が背景になる -->
       <!-- <a-light type="ambient" intensity="0.5"></a-light> -->
@@ -116,4 +118,9 @@
       </a-entity>
     </a-scene>
   </body>
+  <styles>
+    html, body {
+      background: transparent !important;
+    }
+  </styles>
 </html>
