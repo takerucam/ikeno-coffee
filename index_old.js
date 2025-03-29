@@ -54,34 +54,4 @@ if (typeof AFRAME !== 'undefined') {
       });
     }
   });
-
-  // タッチ/クリック時のサウンドコンポーネント
-  AFRAME.registerComponent('touch-sound', {
-    init: function() {
-      let el = this.el;
-
-      // サウンドエンティティへの参照を取得
-      const touchSound = document.querySelector("#touch-sound");
-
-      // クリック/タッチイベント
-      el.addEventListener('click', function() {
-        console.log('Object touched/clicked!');
-        try {
-          touchSound.components.sound.playSound();
-        } catch (error) {
-          console.error('Error playing touch sound:', error);
-        }
-      });
-
-      // モバイル向けにタッチイベントも追加
-      el.addEventListener('touchstart', function() {
-        console.log('Object touched (touchstart)!');
-        try {
-          touchSound.components.sound.playSound();
-        } catch (error) {
-          console.error('Error playing touch sound:', error);
-        }
-      });
-    }
-  });
 }

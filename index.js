@@ -136,7 +136,15 @@ if (typeof AFRAME !== 'undefined') {
         });
       }
 
-      dogg.addEventListener("grab-start", () => {
+      // dogg.addEventListener("grab-start", () => {
+      //   if (isVisible && !isGrabbed) {
+      //     isGrabbed = true;
+      //     hideDogg();
+      //     successSound.components.sound.playSound();
+      //   }
+      // });
+
+      dogg.addEventListener('collide', (event) => {
         if (isVisible && !isGrabbed) {
           isGrabbed = true;
           hideDogg();

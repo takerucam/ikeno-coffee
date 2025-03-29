@@ -1,3 +1,4 @@
 {
-  "notebook.defaultFormatter": "esbenp.prettier-vscode"
+  "notebook.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
 }
