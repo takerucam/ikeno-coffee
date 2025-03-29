@@ -1,5 +1,22 @@
 'use strict';
 
+// WebXRのセッション開始時にPassthroughを有効化
+AFRAME.registerComponent('passthrough-start', {
+  init: function () {
+    this.el.sceneEl.addEventListener('enter-vr', () => {
+      if (navigator.xr) {
+        navigator.xr.requestSession('immersive-ar', { requiredFeatures: ['passthrough'] })
+          .then(session => {
+            console.log('Passthrough enabled');
+          })
+          .catch(err => console.error('Passthrough failed', err));
+      }
+    });
+  }
+});
+
+document.querySelector('a-scene').setAttribute('passthrough-start', '');
+
 let currentSound = null;
 
 function playSound(url = '/assets/bgm/sample.mp3') {
@@ -53,20 +70,3 @@ if (typeof AFRAME !== 'undefined') {
     }
   });
 }
-
- // WebXRのセッション開始時にPassthroughを有効化
- AFRAME.registerComponent('passthrough-start', {
-  init: function () {
-    this.el.sceneEl.addEventListener('enter-vr', () => {
-      if (navigator.xr) {
-        navigator.xr.requestSession('immersive-ar', { requiredFeatures: ['passthrough'] })
-          .then(session => {
-            console.log('Passthrough enabled');
-          })
-          .catch(err => console.error('Passthrough failed', err));
-      }
-    });
-  }
-});
-
-document.querySelector('a-scene').setAttribute('passthrough-start', '');

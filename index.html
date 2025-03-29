@@ -8,7 +8,7 @@
   <body>
     <a-scene
     webxr="optionalFeatures: hit-test, dom-overlay;"
-    xr-mode-ui="enabled: false"
+    xr-mode-ui="enabled: true"
     renderer="colorManagement: true; physicallyCorrectLights: true;"
     sessionType="immersive-ar"
     >
@@ -23,10 +23,6 @@
       </a-entity>
 
       <a-sky color="#ECECEC"></a-sky>
-      <!-- カーソルをつけてオブジェクトをクリックできるようにする -->
-      <a-camera>
-        <a-cursor raycaster="objects: .clickable"></a-cursor>
-      </a-camera>
     </a-scene>
 
   </body>
