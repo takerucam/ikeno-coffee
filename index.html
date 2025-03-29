@@ -3,7 +3,7 @@
   <head>
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
     <script type="module" src="index.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    
   </head>
   <body>
     <a-scene
@@ -11,7 +11,6 @@
       xr-mode-ui="XRMode: xr"
       renderer="colorManagement: true; physicallyCorrectLights: true;"
       sessionType="immersive-ar"
-      embedded arjs debugUIEnabled: false;"
     >
       <!-- Quest 3 の外部カメラ映像が背景になる -->
       <!-- <a-light type="ambient" intensity="0.5"></a-light> -->
@@ -70,7 +69,7 @@
         sound="src: url(assets/fry.mp3); on: fry"
       ></a-entity>
 
-      <a-sky color="#ECECEC"></a-sky> 
+      <!-- <a-sky color="#ECECEC"></a-sky>  -->
 
       <!-- abura -->
       <a-plane
