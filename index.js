@@ -137,7 +137,7 @@ if (typeof AFRAME !== 'undefined') {
       }
 
        // 衝突イベントのリスナーを追加
-       dogg.addEventListener('collidestart', (event) => {
+       dogg.addEventListener('collide', (event) => {
         console.log('衝突が検出されました:', event);
         successSound.components.sound.playSound();
 
@@ -159,14 +159,6 @@ if (typeof AFRAME !== 'undefined') {
           updateScore();
         }
       });
-
-      // dogg.addEventListener("grab-start", () => {
-      //   if (isVisible && !isGrabbed) {
-      //     isGrabbed = true;
-      //     hideDogg();
-      //     successSound.components.sound.playSound();
-      //   }
-      // });
 
       setTimeout(() => {
         setInterval(
