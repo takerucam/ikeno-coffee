@@ -1,5 +1,3 @@
-'use strict';
-
 let a = 2;
 
 let score = 0;
@@ -97,7 +95,7 @@ if (typeof AFRAME !== 'undefined') {
     },
 
     init: function() {
-      const dogg = document.querySelector("#dogg-hole")
+      const dogg = document.querySelector(".dogg-hole")
       const successSound = document.querySelector("#success-sound");
       const failSound = document.querySelector("#fail-sound");
       const frySound = document.querySelector("#fry-sound");
